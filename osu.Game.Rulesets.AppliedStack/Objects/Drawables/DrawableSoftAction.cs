@@ -34,7 +34,14 @@ namespace osu.Game.Rulesets.AppliedStack.Objects.Drawables
         {
             if (!userTriggered)
             {
-                if (!HitObject.HitWindows.CanBeHit(timeOffset)) ApplyResult(r => r.Type = HitResult.IgnoreMiss);
+                if (HitObject.LockAllActions == ActionsLockingMode.None)
+                {
+                    if (timeOffset >= 0) ApplyResult(r => r.Type = HitResult.LargeBonus);
+                }
+                else
+                {
+                    if (!HitObject.HitWindows.CanBeHit(timeOffset)) ApplyResult(r => r.Type = HitResult.IgnoreMiss);
+                }
                 return;
             }
 

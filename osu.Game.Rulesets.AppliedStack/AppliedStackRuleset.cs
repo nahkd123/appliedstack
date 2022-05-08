@@ -36,21 +36,28 @@ namespace osu.Game.Rulesets.AppliedStack
             switch (type)
             {
                 case ModType.DifficultyReduction:
-                    return new Mod[] {
+                    return new Mod[]
+                    {
                         new AppliedStackModUnlockJudgement(),
                     };
                     
                 case ModType.DifficultyIncrease:
-                    return new Mod[] {
+                    return new Mod[]
+                    {
                         new AppliedStackModStrictMode(),
                         new AppliedStackModHidden(),
                     };
 
                 case ModType.Automation:
-                    return new Mod[] { new AppliedStackModAutoplay() };
+                    return new Mod[]
+                    {
+                        new AppliedStackModAutoplay(),
+                        new AppliedStackModRelax(),
+                    };
 
                 case ModType.Fun:
-                    return new Mod[] {
+                    return new Mod[]
+                    {
                         new AppliedStackModToTheBeat(),
                         new AppliedStackModFadingTiles(),
                         new AppliedStackModUpsideDown(),

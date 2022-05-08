@@ -21,7 +21,7 @@ namespace osu.Game.Rulesets.AppliedStack.Mods
         public void ApplyToHitObject(HitObject hitObject)
         {
             if (!(hitObject is AppliedStackHitObject asho)) return;
-            asho.LockAllActions = true;
+            asho.LockAllActions = ActionsLockingMode.All;
         }
 
         public void Update(Playfield playfield)

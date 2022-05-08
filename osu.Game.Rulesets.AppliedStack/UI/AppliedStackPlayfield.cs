@@ -318,6 +318,8 @@ namespace osu.Game.Rulesets.AppliedStack.UI
             if (result.Type == HitResult.Miss || result.Type == HitResult.IgnoreMiss) return;
 
             AppliedStackAction lastAction = daho.LastAction;
+            if (!daho.IsActionValid(lastAction)) return;
+
             int linesCleared = HandleActions(lastAction);
 
             if (!daho.DisplayResult || !DisplayJudgements.Value) return;

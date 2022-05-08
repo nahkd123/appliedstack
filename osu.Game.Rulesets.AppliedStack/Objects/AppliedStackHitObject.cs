@@ -9,6 +9,13 @@ namespace osu.Game.Rulesets.AppliedStack.Objects
     public abstract class AppliedStackHitObject : HitObject
     {
         public int ObjectSeed { get; set; } = 0;
-        public bool LockAllActions { get; set; } = false;
+        public ActionsLockingMode LockAllActions { get; set; } = ActionsLockingMode.HardDrop;
+    }
+
+    public enum ActionsLockingMode
+    {
+        None,
+        HardDrop,
+        All,
     }
 }

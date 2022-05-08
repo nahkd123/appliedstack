@@ -25,18 +25,23 @@ namespace osu.Game.Rulesets.AppliedStack.Objects.Drawables
         public AppliedStackAction[] ValidActions
         {
             get {
-                return HitObject.LockAllActions? new[]
-                {
-                    AppliedStackAction.HardDrop,
-                    AppliedStackAction.Hold,
-                    AppliedStackAction.MoveLeft,
-                    AppliedStackAction.MoveRight,
-                    AppliedStackAction.RotateLeft,
-                    AppliedStackAction.RotateRight,
-                    AppliedStackAction.SoftDrop,
-                } : new[]
-                {
-                    AppliedStackAction.HardDrop
+                return HitObject.LockAllActions switch {
+                    ActionsLockingMode.None => new AppliedStackAction[0],
+                    ActionsLockingMode.HardDrop => new[]
+                    {
+                        AppliedStackAction.HardDrop
+                    },
+                    ActionsLockingMode.All => new[]
+                    {
+                        AppliedStackAction.HardDrop,
+                        AppliedStackAction.Hold,
+                        AppliedStackAction.MoveLeft,
+                        AppliedStackAction.MoveRight,
+                        AppliedStackAction.RotateLeft,
+                        AppliedStackAction.RotateRight,
+                        AppliedStackAction.SoftDrop,
+                    },
+                    _ => new AppliedStackAction[0]
                 };
             }
         }
